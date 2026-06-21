@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var config_1 = require("@prisma/config");
+exports.default = (0, config_1.defineConfig)({
+    datasource: {
+        url: (0, config_1.env)('DATABASE_URL'),
+    },
+    migrations: {
+        seed: 'tsx ./prisma/seed.ts',
+    },
+});
