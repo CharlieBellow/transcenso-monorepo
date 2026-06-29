@@ -1,0 +1,33 @@
+{
+  "output": {
+    "filePath": "repomix-output.md"
+  },
+  "include": [
+    "src/domain",
+    "src/infrastructure",
+    "apps/web/app",
+    "apps/web/src",
+    "apps/api/src"
+  ],
+  "ignore": {
+    "customPatterns": [
+      "**/.next/**",
+      "**/node_modules/**",
+      "node_modules/",
+      "**/dist/**",
+      "**/build/**",
+      "**/*.pcss",
+      "package-lock.json",
+      "yarn.lock",
+      "pnpm-lock.yaml",
+      "apps/api/src/generated/prisma/",
+      "apps/api/src/infra/database/database.module.js",
+      "apps/api/src/infra/http/http.module.js",
+      "apps/api/src/app.module.js",
+      "apps/api/src/main.js",
+      "apps/api/src/application/useCases/gender/createGenderUseCase.js",
+      "**.js",
+      "**/**.js"
+    ]
+  }
+}
