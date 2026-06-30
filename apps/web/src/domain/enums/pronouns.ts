@@ -1,0 +1,6 @@
+export enum Pronouns {
+  ELA_DELA = "ELA_DELA",
+  ELE_DELE = "ELE_DELE",
+  ELU_DELU = "ELU_DELU",
+  PREFIRO_NAO_DIZER = "PREFIRO_NAO_DIZER"
+}
