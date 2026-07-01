@@ -8,7 +8,7 @@ import {
   MethodologyCard,
   MetricsGrid,
   PrivacyCard,
-  RegionBars
+  RegionBars,
 } from "@/components/utilComponent"
 import { ShieldCheck } from "lucide-react"
 
@@ -35,7 +35,7 @@ export default function Page() {
       </section>
 
       <div className="mx-auto mt-12 grid w-full max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr]">
-        {/* <DataCollectionForm /> */}
+        <DataCollectionForm />
         <DataVisualization />
         <PrivacyCard />
         <MethodologyCard />
