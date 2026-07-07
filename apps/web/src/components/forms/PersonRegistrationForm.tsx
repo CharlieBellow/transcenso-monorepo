@@ -7,17 +7,16 @@ import { Card } from "@/components/ui/Card"
 import { CustomButton } from "@/components/ui/custom/Button"
 import { CustomInput } from "@/components/ui/custom/Input"
 import { CustomSelect } from "@/components/ui/custom/Select"
-import { SelectItem } from "@/components/ui/select"
+
+import { useRegisterPerson } from "@/application/hooks/useRegisterPerson"
 import {
   PersonRegistrationFormData,
   personRegistrationSchema,
 } from "@/domain/schemas/personSchema"
 import { MOCK_GENDERS, MOCK_SEXUALITIES } from "@/infra/mocks/identityMocks"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useRegisterPerson } from "@/application/hooks/useRegisterPerson"
 
 export function PersonRegistrationForm() {
-
   const {
     register: savePerson,
     isLoading,
@@ -84,15 +83,16 @@ export function PersonRegistrationForm() {
           ]}
           errorMessage={errors.pronouns?.message}
         />
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+        <div className="grid grid-cols-1 gap-5 lg:grid-cols-1">
           <CustomSelect
             name="genderId"
             control={control}
             label="Identidade de Gênero"
             placeholder="Selecione sua identidade de gênero"
-            options={MOCK_GENDERS.map((gender) => (
-              { value: gender.id, label: gender.title} 
-            ))}
+            options={MOCK_GENDERS.map((gender) => ({
+              value: gender.id,
+              label: gender.title,
+            }))}
             errorMessage={errors.genderId?.message}
           />
           <CustomSelect
@@ -100,9 +100,10 @@ export function PersonRegistrationForm() {
             control={control}
             label="Orientação Sexual"
             placeholder="Selecione sua orientação sexual"
-            options={MOCK_SEXUALITIES.map((sexuality) => (
-              {value: sexuality.id, label: sexuality.title}
-            ))}
+            options={MOCK_SEXUALITIES.map((sexuality) => ({
+              value: sexuality.id,
+              label: sexuality.title,
+            }))}
             errorMessage={errors.sexualityId?.message}
           />
         </div>

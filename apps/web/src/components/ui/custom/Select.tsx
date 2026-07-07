@@ -6,9 +6,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
+import { cn } from "@/lib/utils"
 
 interface SelectOption {
-  value: string
+  value: string | number
   label: string
 }
 
@@ -31,31 +32,49 @@ export function CustomSelect<TFieldValues extends FieldValues>({
 }: CustomSelectProps<TFieldValues>) {
   return (
     <div className="flex flex-col gap-2 w-full">
-      <label className="text-sm font-medium text-muted-foreground/80">
+      <label className="text-sm font-medium text-muted-foreground/90">
         {label}
       </label>
-
-      <Controller
-        name={name}
-        control={control}
-        render={({ field }) => (
-          <Select onValueChange={field.onChange} value={field.value}>
-            <SelectTrigger className="bg-secondary/30 px-4 py-6 text-base glass-border">
-              <SelectValue placeholder={placeholder} />
-            </SelectTrigger>
-            <SelectContent>
-              {options.map((option) => (
-                <SelectItem key={option.value} value={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        )}
-      />
+      <div className="relative">
+        <Controller
+          name={name}
+          control={control}
+          render={({ field }) => (
+            <Select
+              onValueChange={field.onChange}
+              value={
+                field.value !== undefined && field.value !== null
+                  ? String(field.value)
+                  : ""
+              }
+            >
+              <SelectTrigger
+                className={cn(
+                  // 1. CSS EXATO DO INPUT: Remove o estilo do Card e aplica o visual Cyberpunk Clean
+                  "w-full rounded-xl outline-none transition focus:border-transparent focus:ring-2 focus:ring-[#a5ccf9]/60 glass-border bg-secondary/30 px-4 py-3.5 text-base text-foreground text-left flex justify-between items-center h-auto font-normal",
+                  errorMessage &&
+                    "border-destructive focus:ring-destructive/20",
+                )}
+              >
+                <SelectValue placeholder={placeholder || "Selecione..."} />
+              </SelectTrigger>
+              <SelectContent>
+                {options.map((option) => (
+                  <SelectItem
+                    key={String(option.value)}
+                    value={String(option.value)}
+                  >
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          )}
+        />
+      </div>
 
       {errorMessage && (
-        <span className="mb-4 rounded-lg bg-destructive/10 p-3 text-sm font-medium text-destructive">
+        <span className="text-xs font-medium text-destructive/90 mt-0.5 animate-fade-in">
           {errorMessage}
         </span>
       )}
