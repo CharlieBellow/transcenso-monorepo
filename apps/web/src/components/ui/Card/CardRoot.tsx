@@ -7,7 +7,10 @@ export const CardRoot = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("glass-card glass-card-bordered", className)}
+    className={cn(
+      "glass-effect rounded-2xl p-6 text-card-foreground shadow-glass border-brand-gradient",
+      className,
+    )}
     {...props}
   />
 ))

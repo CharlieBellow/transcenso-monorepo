@@ -14,7 +14,6 @@ export const metadata: Metadata = {
   title: 'TransCenso — Dados demográficos com privacidade por design',
   description:
     'Plataforma que coleta e publica dados demográficos da população trans com foco extremo em segurança, anonimização e privacidade por design.',
-  generator: 'v0.app',
   icons: {
     icon: [
       {
