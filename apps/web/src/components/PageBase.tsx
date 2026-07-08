@@ -1,10 +1,18 @@
-import { SecureHeader } from '@/components/secure-header'
-import { HTMLAttributes } from 'react'
+import { Header } from "@/components/Header"
+import { HTMLAttributes } from "react"
 
-export default function PageBase({children, hasSecureHeader = true}: {children: React.ReactNode, hasSecureHeader?: boolean} & HTMLAttributes<HTMLDivElement>) {
+interface PageBaseProps extends HTMLAttributes<HTMLDivElement> {
+  children: React.ReactNode
+  hasHeader?: boolean
+}
+
+export default function PageBase({
+  children,
+  hasHeader = true,
+}: PageBaseProps) {
   return (
-    <main className="min-h-svh pb-16">
-      {hasSecureHeader && <SecureHeader />}
+    <main className="min-h-screen pb-16">
+      {hasHeader && <Header />}
       {children}
     </main>
   )

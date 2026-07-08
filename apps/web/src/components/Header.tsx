@@ -1,7 +1,7 @@
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Lock, ShieldCheck } from "lucide-react"
 
-export function SecureHeader() {
+export function Header() {
   return (
     <header className="sticky top-0 z-20 w-full border-b border-border bg-popover/95 shadow-sm shadow-black/5 backdrop-blur-md supports-[backdrop-filter]:bg-popover/85">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-3.5 sm:px-6">
