@@ -1,6 +1,7 @@
 import { DataCollectionForm } from "@/components/data-collection-form"
 import { DataVisualization } from "@/components/data-visualization"
 import { Header } from "@/components/Header"
+import PageBase from "@/components/PageBase"
 import {
   BarChart,
   ChartsGrid,
@@ -14,15 +15,14 @@ import { ShieldCheck } from "lucide-react"
 
 export default function Page() {
   return (
-    <main className="min-h-svh pb-16">
-      <Header />
+    <PageBase hasHeader={true}>
 
       <section className="mx-auto mt-12 w-full max-w-6xl px-4 text-center sm:px-6">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/30 px-4 py-1.5 text-xs text-foreground/80">
-          <ShieldCheck className="h-3.5 w-3.5 text-[#a5ccf9]" />
+        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/30 px-4 text-xs text-foreground/80">
+          <ShieldCheck className="h-4 w-4 text-primary" />
           Privacidade por design · Anonimização total
         </span>
-        <h1 className="mx-auto mt-5 max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
+        <h1 className="mx-auto mt-6 max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
           Dados demográficos da população{" "}
           <span className="text-gradient">trans</span>, com total{" "}
           <span className="text-gradient">trans-parência</span>
@@ -43,8 +43,8 @@ export default function Page() {
         <ChartsGrid />
         <BarChart />
         <RegionBars />
-        <Footer />
       </div>
-    </main>
+        <Footer />
+    </PageBase>
   )
 }
