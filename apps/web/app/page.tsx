@@ -1,27 +1,25 @@
+import { ChartsGrid } from "@/components/ChartsGrid"
 import { DataCollectionForm } from "@/components/data-collection-form"
 import { DataVisualization } from "@/components/data-visualization"
-import { Header } from "@/components/Header"
+import { Footer } from "@/components/Footer"
+import InlineBorder from "@/components/InlineBorder"
+import { MethodologyCard } from "@/components/MetodologyCard"
+import MetricsGrid, { metrics } from "@/components/MetricsGrid"
+
+import { ColumnsBars, data } from "@/components/ColumnsBars"
 import PageBase from "@/components/PageBase"
-import {
-  BarChart,
-  ChartsGrid,
-  Footer,
-  MethodologyCard,
-  MetricsGrid,
-  PrivacyCard,
-  RegionBars,
-} from "@/components/utilComponent"
+import { PrivacyCard } from "@/components/PrivacyCard"
 import { ShieldCheck } from "lucide-react"
+import { BarChart } from "@/components/BarChart"
 
 export default function Page() {
   return (
     <PageBase hasHeader={true}>
-
       <section className="mx-auto mt-12 w-full max-w-6xl px-4 text-center sm:px-6">
-        <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/30 px-4 text-xs text-foreground/80">
+        <InlineBorder>
           <ShieldCheck className="h-4 w-4 text-primary" />
           Privacidade por design · Anonimização total
-        </span>
+        </InlineBorder>
         <h1 className="mx-auto mt-6 max-w-3xl text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
           Dados demográficos da população{" "}
           <span className="text-gradient">trans</span>, com total{" "}
@@ -34,17 +32,17 @@ export default function Page() {
         </p>
       </section>
 
-      <div className="mx-auto mt-12 grid w-full max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr]">
+      <div className="mx-auto mt-12 grid w-full max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-2">
         <DataCollectionForm />
         <DataVisualization />
         <PrivacyCard />
         <MethodologyCard />
-        <MetricsGrid />
-        <ChartsGrid />
+        <MetricsGrid metrics={metrics} />
+        <ChartsGrid hasHeader={true} content={<BarChart />} />
         <BarChart />
-        <RegionBars />
+        <ColumnsBars data={data} />
       </div>
-        <Footer />
+      <Footer />
     </PageBase>
   )
 }

@@ -14,7 +14,7 @@ export const CardHeaderTitle = ({
   return (
     <Component
       className={cn(
-        "text-xl font-semibold tracking-tight text-white",
+        "text-xl font-semibold tracking-tight text-foreground",
         className,
       )}
       {...props}

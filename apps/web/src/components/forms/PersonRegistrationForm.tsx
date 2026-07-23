@@ -11,25 +11,26 @@ import { CustomSelect } from "@/components/ui/custom/Select"
 import { useRegisterPerson } from "@/application/hooks/useRegisterPerson"
 import {
   PersonRegistrationFormData,
-  personRegistrationSchema,
+  personRegistrationSchema
 } from "@/domain/schemas/personSchema"
 import { MOCK_GENDERS, MOCK_SEXUALITIES } from "@/infra/mocks/identityMocks"
 import { zodResolver } from "@hookform/resolvers/zod"
+import InlineBorder from "@/components/InlineBorder"
 
 export function PersonRegistrationForm() {
   const {
     register: savePerson,
     isLoading,
     error,
-    isSuccess,
+    isSuccess
   } = useRegisterPerson()
   const {
     register,
     formState: { errors },
     control,
-    handleSubmit,
+    handleSubmit
   } = useForm<PersonRegistrationFormData>({
-    resolver: zodResolver(personRegistrationSchema),
+    resolver: zodResolver(personRegistrationSchema)
   })
 
   const onSubmit = (data: PersonRegistrationFormData) => {
@@ -48,10 +49,12 @@ export function PersonRegistrationForm() {
             Suas informações são anonimizadas antes da publicação.
           </p>
         </Card.Header>
-        <span className="hidden shrink-0 items-center gap-1.5 rounded-full border border-border bg-secondary/40 px-3 py-1.5 text-xs text-foreground/90 sm:flex">
-          <Sparkles className="h-3.5 w-3.5 text-accent" />
-          Privacidade por design
-        </span>
+        {
+          <InlineBorder>
+            <Sparkles className="h-3.5 w-3.5 text-accent" />
+            Privacidade por design
+          </InlineBorder>
+        }
       </div>
 
       {/* 2. O Provedor do Shadcn (<Form>) que distribui o estado do Hook */}
@@ -79,7 +82,7 @@ export function PersonRegistrationForm() {
           placeholder="Selecione seus pronomes"
           options={[
             { value: "ELE_DELE", label: "Ele / Dele" },
-            { value: "ELA_DELA", label: "Ela / Dela" },
+            { value: "ELA_DELA", label: "Ela / Dela" }
           ]}
           errorMessage={errors.pronouns?.message}
         />
@@ -91,7 +94,7 @@ export function PersonRegistrationForm() {
             placeholder="Selecione sua identidade de gênero"
             options={MOCK_GENDERS.map((gender) => ({
               value: gender.id,
-              label: gender.title,
+              label: gender.title
             }))}
             errorMessage={errors.genderId?.message}
           />
@@ -102,7 +105,7 @@ export function PersonRegistrationForm() {
             placeholder="Selecione sua orientação sexual"
             options={MOCK_SEXUALITIES.map((sexuality) => ({
               value: sexuality.id,
-              label: sexuality.title,
+              label: sexuality.title
             }))}
             errorMessage={errors.sexualityId?.message}
           />
