@@ -1,7 +1,7 @@
 "use client"
 
-import { Send, Sparkles } from "lucide-react"
-import { useForm } from "react-hook-form"
+import { Lock, Send, Sparkles } from "lucide-react"
+import { Controller, useForm } from "react-hook-form"
 
 import { Card } from "@/components/ui/Card"
 import { CustomButton } from "@/components/ui/custom/Button"
@@ -9,52 +9,53 @@ import { CustomInput } from "@/components/ui/custom/Input"
 import { CustomSelect } from "@/components/ui/custom/Select"
 
 import { useRegisterPerson } from "@/application/hooks/useRegisterPerson"
+import InlineBorder from "@/components/InlineBorder"
+import { CardHeaderDescription } from "@/components/ui/Card/CardHeaderDescription"
+import { CardHeaderTitle } from "@/components/ui/Card/CardHeaderTitle"
+import { CustomPillSelect } from "@/components/ui/custom/CustamPillSelect"
 import {
   PersonRegistrationFormData,
   personRegistrationSchema
 } from "@/domain/schemas/personSchema"
 import { MOCK_GENDERS, MOCK_SEXUALITIES } from "@/infra/mocks/identityMocks"
 import { zodResolver } from "@hookform/resolvers/zod"
-import InlineBorder from "@/components/InlineBorder"
+import { PRONOUN_OPTIONS } from "@/domain/enums/pronouns"
 
 export function PersonRegistrationForm() {
-  const {
-    register: savePerson,
-    isLoading,
-    error,
-    isSuccess
-  } = useRegisterPerson()
+  const { register: savePerson, isLoading } = useRegisterPerson()
+
   const {
     register,
     formState: { errors },
     control,
     handleSubmit
   } = useForm<PersonRegistrationFormData>({
-    resolver: zodResolver(personRegistrationSchema)
+    resolver: zodResolver(personRegistrationSchema),
+    defaultValues: {
+      pronouns: "ELA_DELA"
+    }
   })
 
   const onSubmit = (data: PersonRegistrationFormData) => {
     console.log("Dados do formulário:", data)
+    savePerson(data)
   }
 
   return (
     <Card.Root className="p-6 sm:p-8">
-      {/* Cabeçalho do Formulário (Apresentação) */}
-      <div className="mb-6 flex items-start justify-between gap-4">
+      <div className="mb-6 flex items-center justify-between gap-4">
         <Card.Header>
-          <h2 className="text-xl font-semibold tracking-tight">
-            Coleta de dados
-          </h2>
-          <p className="mt-1 text-sm text-muted-foreground text-pretty">
-            Suas informações são anonimizadas antes da publicação.
-          </p>
+          <CardHeaderTitle tag="h2">Coleta de dados</CardHeaderTitle>
+          <CardHeaderDescription>
+            Suas informações são anonimizadas antes da publicação. Nada que
+            identifique você é exibido publicamente.
+          </CardHeaderDescription>
         </Card.Header>
-        {
-          <InlineBorder>
-            <Sparkles className="h-3.5 w-3.5 text-accent" />
-            Privacidade por design
-          </InlineBorder>
-        }
+
+        <InlineBorder>
+          <Sparkles size={16} className="text-accent" />
+          Privacidade por design
+        </InlineBorder>
       </div>
 
       {/* 2. O Provedor do Shadcn (<Form>) que distribui o estado do Hook */}
@@ -64,28 +65,49 @@ export function PersonRegistrationForm() {
         <CustomInput
           {...register("socialName")}
           label="Nome Social"
-          theme="white"
+          badge="Destaque"
+          placeholder="Como você gostaria que eu te chame?"
           errorMessage={errors.socialName?.message}
+          theme="white"
         />
 
         <CustomInput
           {...register("civilName")}
           label="Nome Civil"
-          theme="default"
+          placeholder="Nome que consta nos documentos"
           errorMessage={errors.civilName?.message}
         />
 
-        <CustomSelect
-          name="pronouns"
-          control={control}
-          label="Pronomes"
-          placeholder="Selecione seus pronomes"
-          options={[
-            { value: "ELE_DELE", label: "Ele / Dele" },
-            { value: "ELA_DELA", label: "Ela / Dela" }
-          ]}
-          errorMessage={errors.pronouns?.message}
-        />
+        <div className="grid gap-5 sm:grid-cols-2">
+          {/* Pronomes via Pill Select com Controller */}
+          <Controller
+            name="pronouns"
+            control={control}
+            render={({ field }) => (
+              <CustomPillSelect
+                label="Pronomes"
+                value={field.value}
+                onChange={field.onChange}
+                options={PRONOUN_OPTIONS}
+                errorMessage={errors.pronouns?.message}
+              />
+            )}
+          />
+
+          {/* Identidade de Gênero */}
+          <CustomSelect
+            name="genderId"
+            control={control}
+            label="Identidade de Gênero"
+            placeholder="Selecione"
+            options={MOCK_GENDERS.map((gender) => ({
+              value: gender.id,
+              label: gender.title
+            }))}
+            errorMessage={errors.genderId?.message}
+          />
+        </div>
+
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-1">
           <CustomSelect
             name="genderId"
@@ -110,6 +132,14 @@ export function PersonRegistrationForm() {
             errorMessage={errors.sexualityId?.message}
           />
         </div>
+
+      {/*   <CustomInput
+          {...register("password")}
+          type="password"
+          label="Senha de Acesso"
+          placeholder="Sua senha secreta"
+          errorMessage={errors.password?.message}
+        /> */}
 
         {/* Botão de Submissão */}
         <CustomButton
