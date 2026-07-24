@@ -1,4 +1,16 @@
-export const data = [
+import { cn } from "@/lib/utils"
+
+export interface ColumnDataItem {
+  label: string
+  value: number
+}
+
+interface ColumnsBarsProps {
+  data?: ColumnDataItem[]
+  className?: string
+}
+
+export const defaultRegionData: ColumnDataItem[] = [
   { label: "Sudeste", value: 42 },
   { label: "Nordeste", value: 22 },
   { label: "Sul", value: 16 },
@@ -7,34 +19,56 @@ export const data = [
 ]
 
 export function ColumnsBars({
-  data
-}: {
-  data: { label: string; value: number }[]
-}) {
+  data = defaultRegionData,
+  className
+}: ColumnsBarsProps) {
   const max = Math.max(...data.map((d) => d?.value))
   return (
-    <div className="flex items-end gap-3 h-44">
-      {data?.map((d, i) => (
-        <div key={d.label} className="flex-1 flex flex-col items-center gap-2">
-          <div className="relative w-full flex-1 flex items-end">
-            <div
-              className="w-full rounded-md"
-              style={{
-                height: `${(d.value / max) * 100}%`,
-                background:
-                  i % 2 === 0
-                    ? "linear-gradient(180deg, rgba(165,204,249,0.9), rgba(165,204,249,0.2))"
-                    : "linear-gradient(180deg, rgba(249,165,214,0.9), rgba(249,165,214,0.2))",
-                boxShadow: "0 0 25px -8px rgba(165,204,249,0.6)"
-              }}
-            />
-          </div>
-          <span className="text-[10px] text-muted-foreground">{d.label}</span>
-          <span className="text-[10px] font-mono text-foreground/80">
-            {d.value}%
-          </span>
-        </div>
+    <div className={cn("flex h-44 items-end gap-3", className)}>
+      {data?.map((item, index) => (
+        <VerticalColumnRow
+          key={item.label}
+          item={item}
+          max={max}
+          isEven={index % 2 === 0}
+        />
       ))}
+    </div>
+  )
+}
+
+/* Átomo responsável por renderizar a coluna individual */
+function VerticalColumnRow({
+  item,
+  max,
+  isEven
+}: {
+  item: ColumnDataItem
+  max: number
+  isEven: boolean
+}) {
+  const percentage = (item.value / max) * 100
+
+  return (
+    <div className="flex h-full flex-1 flex-col items-center gap-2">
+      <div className="relative flex flex-1 w-full items-end">
+        <div
+          className="w-full rounded-md transition-all duration-500"
+          style={{
+            height: `${percentage}%`,
+            background: isEven
+              ? "linear-gradient(180deg, var(--primary), var(--chart-2))"
+              : "linear-gradient(180deg, var(--chart-2), var(--primary))",
+            boxShadow: isEven
+              ? "0 0 20px -4px var(--color-primary, var(--primary))"
+              : "0 0 20px -4px var(--color-chart-2, var(--chart-2))"
+          }}
+        />
+      </div>
+      <span className="text-[10px] text-muted-foreground">{item.label}</span>
+      <span className="font-mono text-[10px] text-foreground/80">
+        {item.value}%
+      </span>
     </div>
   )
 }

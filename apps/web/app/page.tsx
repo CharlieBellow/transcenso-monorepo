@@ -1,16 +1,15 @@
 import { ChartsGrid } from "@/components/ChartsGrid"
 import { DataCollectionForm } from "@/components/data-collection-form"
-import { DataVisualization } from "@/components/data-visualization"
 import { Footer } from "@/components/Footer"
 import InlineBorder from "@/components/InlineBorder"
 import { MethodologyCard } from "@/components/MetodologyCard"
 import MetricsGrid, { metrics } from "@/components/MetricsGrid"
 
-import { ColumnsBars, data } from "@/components/ColumnsBars"
+import { BarChart } from "@/components/BarChart"
+import { ColumnsBars, defaultRegionData } from "@/components/ColumnsBars"
 import PageBase from "@/components/PageBase"
 import { PrivacyCard } from "@/components/PrivacyCard"
 import { ShieldCheck } from "lucide-react"
-import { BarChart } from "@/components/BarChart"
 
 export default function Page() {
   return (
@@ -34,13 +33,19 @@ export default function Page() {
 
       <div className="mx-auto mt-12 grid w-full max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-2">
         <DataCollectionForm />
-        <DataVisualization />
+        <MetricsGrid metrics={metrics} />
         <PrivacyCard />
         <MethodologyCard />
-        <MetricsGrid metrics={metrics} />
-        <ChartsGrid hasHeader={true} content={<BarChart />} />
-        <BarChart />
-        <ColumnsBars data={data} />
+        <ChartsGrid
+          hasHeader={true}
+          content={<BarChart />}
+          title="Distribuição por identidade de gênero"
+        />
+        <ChartsGrid
+          hasHeader={true}
+          title="Distribuição Regional"
+          content={<ColumnsBars data={defaultRegionData} />}
+        />
       </div>
       <Footer />
     </PageBase>

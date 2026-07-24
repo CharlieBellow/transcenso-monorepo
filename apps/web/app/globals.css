@@ -102,7 +102,8 @@
   --bg-glow-blue: rgba(91, 155, 232, 0.22);
   --bg-glow-pink: rgba(232, 123, 184, 0.2);
 
-  --brand-gradient: linear-gradient(120deg, #5b9be8, #e87bb8);
+  --brand-gradient-90: linear-gradient(90deg, #5b9be8, #e87bb8);
+  --brand-gradient-90-inverter: linear-gradient(90deg, #e87bb8, #5b9be8);
 
   --shadow-glass-token: 0 10px 30px -10px rgba(91, 155, 232, 0.1);
 }
