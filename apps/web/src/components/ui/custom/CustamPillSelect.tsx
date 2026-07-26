@@ -22,15 +22,16 @@ export function CustomPillSelect({
   options,
   errorMessage
 }: CustomPillSelectProps) {
+
   return (
     <div className="flex flex-col gap-2 w-full">
       <label className="text-sm font-medium text-foreground/90">{label}</label>
 
       <ToggleGroup
         type="single"
-        value={value}
-        onValueChange={(val) => {
-          if (val) onChange(val) // Evita desmarcar se for seleção obrigatória
+        value={value ?? ""}
+        onValueChange={(val: string) => {
+          if (val) onChange(val)
         }}
         className="flex flex-wrap justify-start gap-2"
       >
@@ -39,7 +40,11 @@ export function CustomPillSelect({
             key={option.value}
             value={option.value}
             aria-label={option.label}
-            className="rounded-full border border-border bg-primary/60 px-3.5 py-1.5 text-xs text-secondary-foreground transition-all data-[state=on]:border-transparent data-[state=on]:bg-primary data-[state=on]:font-semibold data-[state=on]:text-primary-foreground hover:bg-primary/60"
+            className="rounded-full border px-3.5 py-1.5 text-xs transition-all duration-200
+  
+              data-[state=off]:border-border/60 data-[state=off]:bg-secondary/40 data-[state=off]:text-muted-foreground hover:data-[state=off]:bg-secondary/70 hover:data-[state=off]:text-foreground
+
+              data-[state=on]:bg-primary/70 data-[state=on]:text-foreground data-[state=on]:border-transparent data-[state=on]:font-semibold data-[state=on]:shadow-sm"
           >
             {option.label}
           </ToggleGroupItem>

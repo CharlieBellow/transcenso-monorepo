@@ -12,5 +12,5 @@ export interface PersonDTO {
   birthDate: Date;
   gender: GenderDTO;
   sexuality: SexualityDTO;
-  pronouns: Pronouns;
+  pronouns: Pronouns[];
 }

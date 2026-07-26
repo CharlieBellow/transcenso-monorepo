@@ -1,6 +1,6 @@
 "use client"
 
-import { Lock, Send, Sparkles } from "lucide-react"
+import { Send, Sparkles } from "lucide-react"
 import { Controller, useForm } from "react-hook-form"
 
 import { Card } from "@/components/ui/Card"
@@ -32,7 +32,7 @@ export function PersonRegistrationForm() {
   } = useForm<PersonRegistrationFormData>({
     resolver: zodResolver(personRegistrationSchema),
     defaultValues: {
-      pronouns: "ELA_DELA"
+      pronouns: ["ELA_DELA"]
     }
   })
 
@@ -43,18 +43,18 @@ export function PersonRegistrationForm() {
 
   return (
     <Card.Root className="p-6 sm:p-8">
-      <div className="mb-6 flex items-center justify-between gap-4">
-        <Card.Header>
+      <div className="mb-6 flex w-full min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+        <Card.Header className="w-full min-w-0 flex-1">
           <CardHeaderTitle tag="h2">Coleta de dados</CardHeaderTitle>
-          <CardHeaderDescription>
+          <CardHeaderDescription className="text-pretty">
             Suas informações são anonimizadas antes da publicação. Nada que
             identifique você é exibido publicamente.
           </CardHeaderDescription>
         </Card.Header>
 
-        <InlineBorder>
-          <Sparkles size={16} className="text-accent" />
-          Privacidade por design
+        <InlineBorder className="self-start sm:self-auto">
+          <Sparkles size={16} className="text-accent shrink-0" />
+          <span className="truncate">Privacidade por design</span>
         </InlineBorder>
       </div>
 
@@ -79,7 +79,7 @@ export function PersonRegistrationForm() {
         />
 
         <div className="grid gap-5 sm:grid-cols-2">
-          {/* Pronomes via Pill Select com Controller */}
+      
           <Controller
             name="pronouns"
             control={control}
@@ -110,17 +110,6 @@ export function PersonRegistrationForm() {
 
         <div className="grid grid-cols-1 gap-5 lg:grid-cols-1">
           <CustomSelect
-            name="genderId"
-            control={control}
-            label="Identidade de Gênero"
-            placeholder="Selecione sua identidade de gênero"
-            options={MOCK_GENDERS.map((gender) => ({
-              value: gender.id,
-              label: gender.title
-            }))}
-            errorMessage={errors.genderId?.message}
-          />
-          <CustomSelect
             name="sexualityId"
             control={control}
             label="Orientação Sexual"
@@ -133,7 +122,7 @@ export function PersonRegistrationForm() {
           />
         </div>
 
-      {/*   <CustomInput
+        {/*   <CustomInput
           {...register("password")}
           type="password"
           label="Senha de Acesso"

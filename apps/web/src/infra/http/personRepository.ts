@@ -9,7 +9,7 @@ export interface CreatePersonPayload {
   cpf: string
   rg: string
   slug: string
-  pronouns: Pronouns
+  pronouns: Pronouns[]
   genderId: string
   sexualityId: string
 }

@@ -1,8 +1,20 @@
+import { cn } from "@/lib/utils"
 import { ReactNode } from "react"
 
-export default function InlineBorder({ children }: { children: ReactNode }) {
+export default function InlineBorder({
+  children,
+  className
+}: {
+  children: ReactNode
+  className?: string
+}) {
   return (
-    <span className="inline-flex shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-border bg-secondary/30 px-4 text-xs text-foreground/80 py-1.5 font-medium">
+    <span
+      className={cn(
+        "inline-flex max-w-full shrink-0 items-center gap-2 rounded-full border border-border bg-secondary/40 px-3 py-1.5 text-xs text-foreground/90",
+        className
+      )}
+    >
       {children}
     </span>
   )

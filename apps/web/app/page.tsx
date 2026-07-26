@@ -1,5 +1,4 @@
 import { ChartsGrid } from "@/components/ChartsGrid"
-import { DataCollectionForm } from "@/components/data-collection-form"
 import { Footer } from "@/components/Footer"
 import InlineBorder from "@/components/InlineBorder"
 import { MethodologyCard } from "@/components/MetodologyCard"
@@ -32,7 +31,7 @@ export default function Page() {
       </section>
 
       <div className="mx-auto mt-12 grid w-full max-w-6xl gap-6 px-4 sm:px-6 lg:grid-cols-2">
-        <DataCollectionForm />
+        
         <MetricsGrid metrics={metrics} />
         <PrivacyCard />
         <MethodologyCard />

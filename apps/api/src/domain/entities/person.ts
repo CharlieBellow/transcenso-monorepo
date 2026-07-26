@@ -14,7 +14,7 @@ export interface PersonProps {
   cpf: string;
   rg: string;
   birthDate: Date;
-  pronouns: Pronouns;
+  pronouns: Pronouns[];
   createdAt?: Date;
   updatedAt?: Date;
 }
