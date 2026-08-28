@@ -20,7 +20,7 @@ export const personRegistrationSchema = z.object({
     .max(70, { message: "O nome civil não pode passar de 70 caracteres." })
     .min(2, { message: "O nome civil é obrigatório." }),
   pronouns: z.array(z.enum(Pronouns)).min(1,
-      "Por favor, selecione um pronome válido." ),
+      "Por favor, selecione pelo menosum pronome válido." ),
   genderId: z
     .string()
     .min(1, { message: "A identidade de gênero é obrigatória." }),
