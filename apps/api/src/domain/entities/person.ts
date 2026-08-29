@@ -25,7 +25,7 @@ export class Person {
   private _id: string;
 
   // O constructor:  É o guarda da porta. Quando você der um new Person(...), o código dentro do construtor roda imediatamente.
-  constructor(props: PersonProps) {
+  private constructor(props: PersonProps) {
     this._id = props.id ?? crypto.randomUUID();
     if (!props.civilName || props.civilName.trim() === '') {
       throw new Error('O nome civil é obrigatório.');
@@ -47,6 +47,15 @@ export class Person {
       slug: props.slug ?? generatedSlug,
       createdAt: props.createdAt ?? new Date(),
     };
+  }
+  static create(props: PersonProps): Person {
+    return new Person(props);
+  }
+
+  get displayName(): string {
+    const hasSocialName =
+      this.props.socialName && this.props.socialName.trim().length > 0;
+    return hasSocialName ? this.props.socialName!.trim() : this.props.civilName;
   }
 
   get id() {
@@ -76,7 +85,7 @@ export class Person {
     return this.props.birthDate;
   }
 
-  get pronouns() {
+  get pronouns(): Pronouns[] {
     return this.props.pronouns;
   }
   get genderId() {

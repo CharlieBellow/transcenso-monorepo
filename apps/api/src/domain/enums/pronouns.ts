@@ -1,7 +1,8 @@
+
 export enum Pronouns {
-  ELE_DELE = 'Ele/Dele',
-  ELA_DELA = 'Ela/Dela',
-  ELU_DELU = 'Elu/Delu',
-  NEUTRO = 'Neutro',
-  OUTROS = 'Outros/Neutro',
+  HE_HIM = 'ELE_DELE',
+  SHE_HER = 'ELA_DELA',
+  THEY_THEM = 'ELU_DELU',
+  OTHER = 'OUTROS',
+  NEUTRAL = 'NEUTRO',
 }

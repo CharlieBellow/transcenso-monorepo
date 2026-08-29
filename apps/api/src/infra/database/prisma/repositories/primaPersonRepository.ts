@@ -10,6 +10,7 @@ import { PrismaService } from '../PrismaService';
 export class PrismaPersonRepository implements PersonRepository {
   constructor(private prisma: PrismaService) {}
 
+  
   async findById(id: string): Promise<Person | null> {
     const person = await this.prisma.person.findUnique({
       where: { id },
