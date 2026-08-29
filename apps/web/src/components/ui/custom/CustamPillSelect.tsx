@@ -9,15 +9,15 @@ interface Option {
 
 interface CustomPillSelectProps {
   label: string
-  value?: string
-  onChange: (value: string) => void
+  value?: string[]
+  onChange: (value: string[]) => void
   options: Option[]
   errorMessage?: string
 }
 
 export function CustomPillSelect({
   label,
-  value,
+  value = [],
   onChange,
   options,
   errorMessage
@@ -28,9 +28,9 @@ export function CustomPillSelect({
       <label className="text-sm font-medium text-foreground/90">{label}</label>
 
       <ToggleGroup
-        type="single"
-        value={value ?? ""}
-        onValueChange={(val: string) => {
+        type="multiple"
+        value={value ?? []}
+        onValueChange={(val: string[]) => {
           if (val) onChange(val)
         }}
         className="flex flex-wrap justify-start gap-2"

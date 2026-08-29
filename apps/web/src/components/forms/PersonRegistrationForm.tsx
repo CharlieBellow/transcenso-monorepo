@@ -19,7 +19,7 @@ import {
 } from "@/domain/schemas/personSchema"
 import { MOCK_GENDERS, MOCK_SEXUALITIES } from "@/infra/mocks/identityMocks"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { PRONOUN_OPTIONS } from "@/domain/enums/pronouns"
+import { PRONOUN_OPTIONS, Pronouns } from "@/domain/enums/pronouns"
 
 export function PersonRegistrationForm() {
   const { register: savePerson, isLoading } = useRegisterPerson()
@@ -32,7 +32,7 @@ export function PersonRegistrationForm() {
   } = useForm<PersonRegistrationFormData>({
     resolver: zodResolver(personRegistrationSchema),
     defaultValues: {
-      pronouns: ["ELA_DELA"]
+      pronouns: [Pronouns.ELA_DELA] // Valor padrão para o campo de pronomes
     }
   })
 
