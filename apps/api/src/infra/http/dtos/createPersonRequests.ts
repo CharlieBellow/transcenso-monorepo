@@ -2,12 +2,12 @@ import { Pronouns } from 'src/domain/enums/pronouns';
 
 export interface CreatePersonRequests {
   civilName: string;
-  socialName: string;
+  socialName?: string | null;
   birthDate: Date;
   cpf: string;
   rg: string;
-  slug: string;
-  pronouns: Pronouns;
+  slug?: string;
+  pronouns: Pronouns[];
   genderId: string;
   sexualityId: string;
 }

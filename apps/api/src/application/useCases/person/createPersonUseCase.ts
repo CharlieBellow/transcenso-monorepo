@@ -8,14 +8,14 @@ import { SexualityRepository } from 'src/domain/repositories/sexualityRepository
 
 interface CreatePersonInput {
   civilName: string;
-  socialName: string;
-  slug: string;
+  socialName?: string | null;
+  slug?: string;
   cpf: string;
   rg: string;
   genderId: string;
   sexualityId: string;
   birthDate: Date;
-  pronouns: Pronouns;
+  pronouns: Pronouns[];
 }
 
 @Injectable()
@@ -49,7 +49,7 @@ export class CreatePersonUseCase {
       throw new Error(`Slug already exists`);
     }
 
-    const person = new Person({
+    const person = Person.create({
       ...input,
       genderId: gender.id,
       sexualityId: sexuality.id,

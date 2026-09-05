@@ -10,7 +10,6 @@ import { PersonPresenter } from 'src/infra/http/presenters/person.presenter';
 export class CreatePersonController {
   constructor(
     private createPersonUseCase: CreatePersonUseCase,
-    private prisma: PrismaService,
   ) {}
   @Post()
   async handle(@Body() input: CreatePersonRequests) {

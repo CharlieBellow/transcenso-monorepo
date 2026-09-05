@@ -39,7 +39,7 @@ async function main() {
       birthDate: new Date('1995-05-15'),
       cpf: '12345678901',
       rg: 'MG1234567',
-      pronouns: 'HE_HIM',
+      pronouns: ['ELE_DELE'],
       slug: 'charlie-silva',
       genderId: homemTrans.id,
       sexualityId: bissexual.id,
