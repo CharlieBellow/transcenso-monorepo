@@ -4,6 +4,7 @@ import { CreatePersonUseCase } from 'src/application/useCases/person/createPerso
 import { PrismaService } from 'src/infra/database/prisma/PrismaService';
 
 import { CreatePersonRequests } from 'src/infra/http/dtos/createPersonRequests';
+import { PersonPresenter } from 'src/infra/http/presenters/person.presenter';
 
 @Controller('people')
 export class CreatePersonController {
@@ -13,8 +14,9 @@ export class CreatePersonController {
   ) {}
   @Post()
   async handle(@Body() input: CreatePersonRequests) {
-    const result = await this.createPersonUseCase.execute(input);
+    const person = await this.createPersonUseCase.execute(input);
 
-    return result;
+    // Padroniza a resposta HTTP usando o Presenter
+    return PersonPresenter.toDetailHTTP(person);
   }
 }

@@ -12,6 +12,6 @@ export class FindByCpfPersonController {
   async handle(@Param('cpf') cpf: string) {
     const result = await this.findByCpfPersonUseCase.execute(cpf);
 
-    return PersonPresenter.toHTTP(result);
+    return PersonPresenter.toDetailHTTP(result);
   }
 }

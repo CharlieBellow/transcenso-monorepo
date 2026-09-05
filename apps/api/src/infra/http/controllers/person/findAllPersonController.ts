@@ -8,8 +8,9 @@ export class FindAllPersonController {
 
   @Get()
   async handle() {
-    const result = await this.findAllPersonUseCase.execute();
+    const people = await this.findAllPersonUseCase.execute();
 
-    return PersonPresenter.toHTTP(result);
+    // Itera sobre o array e aplica o presenter de resumo para cada pessoa
+    return people.map((person) => PersonPresenter.toSummaryHTTP(person));
   }
 }

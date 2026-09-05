@@ -8,8 +8,10 @@ export class FindByIdPersonController {
 
   @Get('id/:id')
   async handle(@Param('id') id: string) {
-    const result = await this.findByIdPersonUseCase.execute(id);
+    const person = await this.findByIdPersonUseCase.execute(id);
 
-    return PersonPresenter.toHTTP(result);
+    if(!person) return null;
+
+    return PersonPresenter.toDetailHTTP(person);
   }
 }
