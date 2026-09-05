@@ -30,6 +30,27 @@ export type Sexuality = $Result.DefaultSelection<Prisma.$SexualityPayload>
 export type Person = $Result.DefaultSelection<Prisma.$PersonPayload>
 
 /**
+ * Enums
+ */
+export namespace $Enums {
+  export const Pronouns: {
+  ELE_DELE: 'ELE_DELE',
+  ELA_DELA: 'ELA_DELA',
+  ELU_DELU: 'ELU_DELU',
+  OUTROS: 'OUTROS',
+  NEUTRAL: 'NEUTRAL',
+  PREFER_NOT_TO_SAY: 'PREFER_NOT_TO_SAY'
+};
+
+export type Pronouns = (typeof Pronouns)[keyof typeof Pronouns]
+
+}
+
+export type Pronouns = $Enums.Pronouns
+
+export const Pronouns: typeof $Enums.Pronouns
+
+/**
  * ##  Prisma Client ʲˢ
  *
  * Type-safe database client for TypeScript & Node.js
@@ -3329,7 +3350,6 @@ export namespace Prisma {
     cpf: string | null
     rg: string | null
     birthDate: Date | null
-    pronouns: string | null
     genderId: string | null
     sexualityId: string | null
     createdAt: Date | null
@@ -3344,7 +3364,6 @@ export namespace Prisma {
     cpf: string | null
     rg: string | null
     birthDate: Date | null
-    pronouns: string | null
     genderId: string | null
     sexualityId: string | null
     createdAt: Date | null
@@ -3376,7 +3395,6 @@ export namespace Prisma {
     cpf?: true
     rg?: true
     birthDate?: true
-    pronouns?: true
     genderId?: true
     sexualityId?: true
     createdAt?: true
@@ -3391,7 +3409,6 @@ export namespace Prisma {
     cpf?: true
     rg?: true
     birthDate?: true
-    pronouns?: true
     genderId?: true
     sexualityId?: true
     createdAt?: true
@@ -3494,7 +3511,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date
-    pronouns: string
+    pronouns: $Enums.Pronouns[]
     genderId: string
     sexualityId: string
     createdAt: Date
@@ -3612,7 +3629,7 @@ export namespace Prisma {
       cpf: string
       rg: string
       birthDate: Date
-      pronouns: string
+      pronouns: $Enums.Pronouns[]
       genderId: string
       sexualityId: string
       createdAt: Date
@@ -4049,7 +4066,7 @@ export namespace Prisma {
     readonly cpf: FieldRef<"Person", 'String'>
     readonly rg: FieldRef<"Person", 'String'>
     readonly birthDate: FieldRef<"Person", 'DateTime'>
-    readonly pronouns: FieldRef<"Person", 'String'>
+    readonly pronouns: FieldRef<"Person", 'Pronouns[]'>
     readonly genderId: FieldRef<"Person", 'String'>
     readonly sexualityId: FieldRef<"Person", 'String'>
     readonly createdAt: FieldRef<"Person", 'DateTime'>
@@ -4589,6 +4606,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Pronouns[]'
+   */
+  export type ListEnumPronounsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Pronouns[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Pronouns'
+   */
+  export type EnumPronounsFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Pronouns'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -4746,7 +4777,7 @@ export namespace Prisma {
     cpf?: StringFilter<"Person"> | string
     rg?: StringFilter<"Person"> | string
     birthDate?: DateTimeFilter<"Person"> | Date | string
-    pronouns?: StringFilter<"Person"> | string
+    pronouns?: EnumPronounsNullableListFilter<"Person">
     genderId?: StringFilter<"Person"> | string
     sexualityId?: StringFilter<"Person"> | string
     createdAt?: DateTimeFilter<"Person"> | Date | string
@@ -4783,7 +4814,7 @@ export namespace Prisma {
     civilName?: StringFilter<"Person"> | string
     socialName?: StringNullableFilter<"Person"> | string | null
     birthDate?: DateTimeFilter<"Person"> | Date | string
-    pronouns?: StringFilter<"Person"> | string
+    pronouns?: EnumPronounsNullableListFilter<"Person">
     genderId?: StringFilter<"Person"> | string
     sexualityId?: StringFilter<"Person"> | string
     createdAt?: DateTimeFilter<"Person"> | Date | string
@@ -4821,7 +4852,7 @@ export namespace Prisma {
     cpf?: StringWithAggregatesFilter<"Person"> | string
     rg?: StringWithAggregatesFilter<"Person"> | string
     birthDate?: DateTimeWithAggregatesFilter<"Person"> | Date | string
-    pronouns?: StringWithAggregatesFilter<"Person"> | string
+    pronouns?: EnumPronounsNullableListFilter<"Person">
     genderId?: StringWithAggregatesFilter<"Person"> | string
     sexualityId?: StringWithAggregatesFilter<"Person"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Person"> | Date | string
@@ -4984,7 +5015,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date | string
-    pronouns: string
+    pronouns?: PersonCreatepronounsInput | $Enums.Pronouns[]
     createdAt?: Date | string
     updatedAt?: Date | string
     gender: GenderCreateNestedOneWithoutPeopleInput
@@ -4999,7 +5030,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date | string
-    pronouns: string
+    pronouns?: PersonCreatepronounsInput | $Enums.Pronouns[]
     genderId: string
     sexualityId: string
     createdAt?: Date | string
@@ -5014,7 +5045,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gender?: GenderUpdateOneRequiredWithoutPeopleNestedInput
@@ -5029,7 +5060,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     genderId?: StringFieldUpdateOperationsInput | string
     sexualityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5044,7 +5075,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date | string
-    pronouns: string
+    pronouns?: PersonCreatepronounsInput | $Enums.Pronouns[]
     genderId: string
     sexualityId: string
     createdAt?: Date | string
@@ -5059,7 +5090,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5072,7 +5103,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     genderId?: StringFieldUpdateOperationsInput | string
     sexualityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5245,6 +5276,14 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type EnumPronounsNullableListFilter<$PrismaModel = never> = {
+    equals?: $Enums.Pronouns[] | ListEnumPronounsFieldRefInput<$PrismaModel> | null
+    has?: $Enums.Pronouns | EnumPronounsFieldRefInput<$PrismaModel> | null
+    hasEvery?: $Enums.Pronouns[] | ListEnumPronounsFieldRefInput<$PrismaModel>
+    hasSome?: $Enums.Pronouns[] | ListEnumPronounsFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
   export type GenderScalarRelationFilter = {
     is?: GenderWhereInput
     isNot?: GenderWhereInput
@@ -5278,7 +5317,6 @@ export namespace Prisma {
     cpf?: SortOrder
     rg?: SortOrder
     birthDate?: SortOrder
-    pronouns?: SortOrder
     genderId?: SortOrder
     sexualityId?: SortOrder
     createdAt?: SortOrder
@@ -5293,7 +5331,6 @@ export namespace Prisma {
     cpf?: SortOrder
     rg?: SortOrder
     birthDate?: SortOrder
-    pronouns?: SortOrder
     genderId?: SortOrder
     sexualityId?: SortOrder
     createdAt?: SortOrder
@@ -5396,6 +5433,10 @@ export namespace Prisma {
     deleteMany?: PersonScalarWhereInput | PersonScalarWhereInput[]
   }
 
+  export type PersonCreatepronounsInput = {
+    set: $Enums.Pronouns[]
+  }
+
   export type GenderCreateNestedOneWithoutPeopleInput = {
     create?: XOR<GenderCreateWithoutPeopleInput, GenderUncheckedCreateWithoutPeopleInput>
     connectOrCreate?: GenderCreateOrConnectWithoutPeopleInput
@@ -5406,6 +5447,11 @@ export namespace Prisma {
     create?: XOR<SexualityCreateWithoutPeopleInput, SexualityUncheckedCreateWithoutPeopleInput>
     connectOrCreate?: SexualityCreateOrConnectWithoutPeopleInput
     connect?: SexualityWhereUniqueInput
+  }
+
+  export type PersonUpdatepronounsInput = {
+    set?: $Enums.Pronouns[]
+    push?: $Enums.Pronouns | $Enums.Pronouns[]
   }
 
   export type GenderUpdateOneRequiredWithoutPeopleNestedInput = {
@@ -5541,7 +5587,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date | string
-    pronouns: string
+    pronouns?: PersonCreatepronounsInput | $Enums.Pronouns[]
     createdAt?: Date | string
     updatedAt?: Date | string
     sexuality: SexualityCreateNestedOneWithoutPeopleInput
@@ -5555,7 +5601,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date | string
-    pronouns: string
+    pronouns?: PersonCreatepronounsInput | $Enums.Pronouns[]
     sexualityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5598,7 +5644,7 @@ export namespace Prisma {
     cpf?: StringFilter<"Person"> | string
     rg?: StringFilter<"Person"> | string
     birthDate?: DateTimeFilter<"Person"> | Date | string
-    pronouns?: StringFilter<"Person"> | string
+    pronouns?: EnumPronounsNullableListFilter<"Person">
     genderId?: StringFilter<"Person"> | string
     sexualityId?: StringFilter<"Person"> | string
     createdAt?: DateTimeFilter<"Person"> | Date | string
@@ -5613,7 +5659,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date | string
-    pronouns: string
+    pronouns?: PersonCreatepronounsInput | $Enums.Pronouns[]
     createdAt?: Date | string
     updatedAt?: Date | string
     gender: GenderCreateNestedOneWithoutPeopleInput
@@ -5627,7 +5673,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date | string
-    pronouns: string
+    pronouns?: PersonCreatepronounsInput | $Enums.Pronouns[]
     genderId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5779,7 +5825,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date | string
-    pronouns: string
+    pronouns?: PersonCreatepronounsInput | $Enums.Pronouns[]
     sexualityId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5793,7 +5839,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     sexuality?: SexualityUpdateOneRequiredWithoutPeopleNestedInput
@@ -5807,7 +5853,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     sexualityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5821,7 +5867,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     sexualityId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5835,7 +5881,7 @@ export namespace Prisma {
     cpf: string
     rg: string
     birthDate: Date | string
-    pronouns: string
+    pronouns?: PersonCreatepronounsInput | $Enums.Pronouns[]
     genderId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5849,7 +5895,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gender?: GenderUpdateOneRequiredWithoutPeopleNestedInput
@@ -5863,7 +5909,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     genderId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5877,7 +5923,7 @@ export namespace Prisma {
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    pronouns?: StringFieldUpdateOperationsInput | string
+    pronouns?: PersonUpdatepronounsInput | $Enums.Pronouns[]
     genderId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

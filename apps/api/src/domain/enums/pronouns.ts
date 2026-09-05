@@ -5,4 +5,5 @@ export enum Pronouns {
   THEY_THEM = 'ELU_DELU',
   OTHER = 'OUTROS',
   NEUTRAL = 'NEUTRO',
+  PREFER_NOT_TO_SAY = 'PREFIRO_NAO_DIZER',
 }

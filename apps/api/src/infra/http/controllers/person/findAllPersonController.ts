@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { FindAllPersonUseCase } from 'src/application/useCases/person/findAllPersonUseCase';
+import { PersonPresenter } from 'src/infra/http/presenters/person.presenter';
 
 @Controller('people')
 export class FindAllPersonController {
@@ -9,6 +10,6 @@ export class FindAllPersonController {
   async handle() {
     const result = await this.findAllPersonUseCase.execute();
 
-    return result;
+    return PersonPresenter.toHTTP(result);
   }
 }

@@ -1,6 +1,7 @@
 import { Body, Controller, Param, Put } from '@nestjs/common';
 import { UpdatePersonUseCase } from 'src/application/useCases/person/updatePersonUseCase';
 import { UpdatePersonRequests } from 'src/infra/http/dtos/createPersonRequests';
+import { PersonPresenter } from 'src/infra/http/presenters/person.presenter';
 
 @Controller('people')
 export class UpdatePersonController {
@@ -8,6 +9,6 @@ export class UpdatePersonController {
   @Put(':id')
   async handle(@Param('id') id: string, @Body() input: UpdatePersonRequests) {
     const person = await this.updatePersonUseCase.execute(id, input);
-    return person;
+    return PersonPresenter.toHTTP(person)
   }
 }

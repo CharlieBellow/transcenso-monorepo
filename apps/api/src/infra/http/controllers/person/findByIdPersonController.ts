@@ -1,5 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { FindByIdPersonUseCase } from 'src/application/useCases/person/findByIdPersonUseCase';
+import { PersonPresenter } from 'src/infra/http/presenters/person.presenter';
 
 @Controller('people')
 export class FindByIdPersonController {
@@ -9,6 +10,6 @@ export class FindByIdPersonController {
   async handle(@Param('id') id: string) {
     const result = await this.findByIdPersonUseCase.execute(id);
 
-    return result;
+    return PersonPresenter.toHTTP(result);
   }
 }

@@ -4,6 +4,7 @@
 
 datasource db {
   provider = "postgresql"
+  
 }
 
 generator client {
@@ -47,6 +48,7 @@ enum Pronouns {
   ELU_DELU
   OUTROS
   NEUTRAL
+  PREFER_NOT_TO_SAY
 }
 
 model Person {

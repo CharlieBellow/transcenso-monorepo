@@ -2,6 +2,8 @@ import {
   Gender as PrismaGender,
   Person as PrismaPerson,
   Sexuality as PrismaSexuality,
+  Prisma,
+  Pronouns as PrismaPronouns,
 } from 'src/generated/prisma';
 import { Person } from '../../../../domain/entities/person';
 import { Pronouns } from '../../../../domain/enums/pronouns';
@@ -12,7 +14,7 @@ type PrismaPersonWithRelations = PrismaPerson & {
 };
 
 export class PrismaPersonMapper {
-  static toPrisma(person: Person) {
+  static toPrisma(person: Person): Prisma.PersonUncheckedCreateInput {
     return {
       id: person.id,
       civilName: person.civilName,
@@ -20,7 +22,7 @@ export class PrismaPersonMapper {
       birthDate: person.birthDate,
       cpf: person.cpf,
       rg: person.rg,
-      pronouns: person.pronouns,
+      pronouns: person.pronouns as unknown as PrismaPronouns[],
       slug: person.slug,
       genderId: person.genderId,
       sexualityId: person.sexualityId,
@@ -31,7 +33,7 @@ export class PrismaPersonMapper {
     return Person.create({
       id: raw.id,
       civilName: String(raw.civilName),
-      socialName: raw.socialName ? String(raw.socialName) : undefined,
+      socialName: raw.socialName,
       birthDate: raw.birthDate,
       cpf: raw.cpf,
       rg: raw.rg,

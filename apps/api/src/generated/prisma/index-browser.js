@@ -169,7 +169,14 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.Pronouns = exports.$Enums.Pronouns = {
+  ELE_DELE: 'ELE_DELE',
+  ELA_DELA: 'ELA_DELA',
+  ELU_DELU: 'ELU_DELU',
+  OUTROS: 'OUTROS',
+  NEUTRAL: 'NEUTRAL',
+  PREFER_NOT_TO_SAY: 'PREFER_NOT_TO_SAY'
+};
 
 exports.Prisma.ModelName = {
   Gender: 'Gender',

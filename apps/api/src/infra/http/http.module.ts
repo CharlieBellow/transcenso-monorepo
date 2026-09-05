@@ -33,7 +33,7 @@ import { DeletePersonController } from 'src/infra/http/controllers/person/delete
 import { FindAllPersonController } from 'src/infra/http/controllers/person/findAllPersonController';
 import { FindByCpfPersonController } from 'src/infra/http/controllers/person/findByCpfPersonController';
 import { FindByIdPersonController } from 'src/infra/http/controllers/person/findByIdPersonController';
-import { UpdatePersonController } from 'src/infra/http/controllers/person/updatePersonControllrt';
+import { UpdatePersonController } from 'src/infra/http/controllers/person/updatePersonController';
 import { CreateSexualityController } from 'src/infra/http/controllers/sexuality/createSexualityController';
 import { DeleteSexualityController } from 'src/infra/http/controllers/sexuality/deleteSexualityController';
 import { FindAllSexualityController } from 'src/infra/http/controllers/sexuality/findAllSexualityController';

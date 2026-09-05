@@ -41,15 +41,24 @@ model Sexuality {
   @@map("sexualities")
 }
 
+enum Pronouns {
+  ELE_DELE
+  ELA_DELA
+  ELU_DELU
+  OUTROS
+  NEUTRAL
+  PREFER_NOT_TO_SAY
+}
+
 model Person {
-  id         String   @id @default(uuid())
+  id         String     @id @default(uuid())
   civilName  String
   socialName String?
-  slug       String   @unique
-  cpf        String   @unique
-  rg         String   @unique
+  slug       String     @unique
+  cpf        String     @unique
+  rg         String     @unique
   birthDate  DateTime
-  pronouns   String // No banco salva como string (o Enum do TS ajuda na lógica)
+  pronouns   Pronouns[] // No banco salva como string (o Enum do TS ajuda na lógica)
 
   // Chaves estrangeiras
   genderId    String

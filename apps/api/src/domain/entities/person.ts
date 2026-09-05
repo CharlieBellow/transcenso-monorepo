@@ -10,7 +10,7 @@ export interface PersonProps {
   slug?: string;
   genderId: string;
   sexualityId: string;
-  socialName: string;
+  socialName?: string | null;
   cpf: string;
   rg: string;
   birthDate: Date;
@@ -116,7 +116,8 @@ export class Person {
   }): PersonDTO {
     return {
       id: this._id,
-      // civilName: this.civilName, não é necessário, pois o nome Social deve ser utilizado para identificação da pessoa em todas as telas do sistema, e o nome civil deve ser utilizado apenas para fins jurídicos, de registro e documentação.
+      name: this.displayName,
+      civilName: this.civilName,
       socialName: this.socialName || this.civilName,
       slug: this.slug,
       cpf: this.cpf,
