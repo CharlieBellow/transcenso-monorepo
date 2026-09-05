@@ -2,11 +2,14 @@ import { PersonRegistrationFormData } from "@/domain/schemas/personSchema"
 
 // Definimos o DTO exato que a API espera no body da requisição
 export interface CreatePersonApiDTO {
-  social_name: string
-  civil_name: string
+  socialName?: string | null
+  civilName: string
   pronouns: string[]
-  gender_id: string
-  sexuality_id: string
+  genderId: string
+  sexualityId: string
+  birthDate: string | Date
+  cpf: string
+  rg: string
 }
 
 export class PersonMapper {
@@ -14,11 +17,14 @@ export class PersonMapper {
     formData: PersonRegistrationFormData
   ): CreatePersonApiDTO {
     return {
-      social_name: formData.socialName,
-      civil_name: formData.civilName,
-      pronouns: formData.pronouns, // Repassa o array de strings
-      gender_id: formData.genderId,
-      sexuality_id: formData.sexualityId
+      socialName: formData.socialName,
+      civilName: formData.civilName,
+      pronouns: formData.pronouns,
+      birthDate: formData.birthDate,
+      cpf: formData.cpf,
+      rg: formData.rg,
+      genderId: formData.genderId,
+      sexualityId: formData.sexualityId
     }
   }
 }

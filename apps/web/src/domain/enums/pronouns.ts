@@ -3,7 +3,8 @@ export enum Pronouns {
   ELE_DELE = "ELE_DELE",
   ELU_DELU = "ELU_DELU",
   NEUTRO = "NEUTRO",
-  PREFIRO_NAO_DIZER = "PREFIRO_NAO_DIZER"
+  PREFIRO_NAO_DIZER = "PREFIRO_NAO_DIZER",
+  OUTROS = "OUTROS"
 }
 
 // 1. Dicionário de Rótulos para Exibição (Exhaustive Mapping)
@@ -12,6 +13,7 @@ export const PRONOUN_LABELS: Record<Pronouns, string> = {
   [Pronouns.ELE_DELE]: "Ele / Dele",
   [Pronouns.ELU_DELU]: "Elu / Delu",
   [Pronouns.NEUTRO]: "Neutro",
+  [Pronouns.OUTROS]: "Outros",
   [Pronouns.PREFIRO_NAO_DIZER]: "Prefiro não dizer"
 }
 
