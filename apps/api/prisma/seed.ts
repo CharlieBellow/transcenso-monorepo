@@ -1,6 +1,17 @@
+import 'dotenv/config';
 import { PrismaClient } from '../src/generated/prisma/index.js';
+import { PrismaPg } from '@prisma/adapter-pg';
+import pg from 'pg';
 
-const prisma = new PrismaClient();
+const pool = new pg.Pool({
+  connectionString: process.env.DATABASE_URL,
+});
+
+// 2. Conecta o adaptador do Prisma à pool
+const adapter = new PrismaPg(pool);
+
+// 3. Instancia o PrismaClient injetando o adapter
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   console.log('🌱 Iniciando semeadura do banco de dados...');
