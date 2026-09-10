@@ -92,3 +92,5 @@ src/generated/prisma
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+notes.md

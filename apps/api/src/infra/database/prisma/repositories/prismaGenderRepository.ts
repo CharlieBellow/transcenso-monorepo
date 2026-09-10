@@ -29,7 +29,9 @@ export class PrismaGenderRepository implements GenderRepository {
   }
 
   async listAll(): Promise<Gender[]> {
-    const genders = await this.prisma.gender.findMany();
+    const genders = await this.prisma.gender.findMany({
+      orderBy: { title: 'asc' },
+    });
 
     return genders.map((g) => PrismaGenderMapper.toDomain(g));
   }

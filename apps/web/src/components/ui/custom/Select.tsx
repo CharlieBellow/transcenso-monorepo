@@ -39,37 +39,42 @@ export function CustomSelect<TFieldValues extends FieldValues>({
         <Controller
           name={name}
           control={control}
-          render={({ field }) => (
-            <Select
-              onValueChange={field.onChange}
-              value={
-                field.value !== undefined && field.value !== null
-                  ? String(field.value)
-                  : ""
-              }
-            >
-              <SelectTrigger
-                className={cn(
-                  // 1. CSS EXATO DO INPUT: Remove o estilo do Card e aplica o visual Cyberpunk Clean
-                  "w-full rounded-xl outline-none transition focus:border-transparent focus:ring-2 focus:ring-[#a5ccf9]/60 glass-border bg-secondary/30 px-4 py-3.5 text-base text-foreground text-left flex justify-between items-center h-auto font-normal",
-                  errorMessage &&
-                    "border-destructive focus:ring-destructive/20",
-                )}
+          render={({ field }) => {
+            const selectedOption = options.find(
+              (opt) => String(opt.value) === String(field.value)
+            )
+            return (
+              <Select
+                onValueChange={field.onChange}
+                value={
+                  field.value !== undefined && field.value !== null
+                    ? String(field.value)
+                    : ""
+                }
               >
-                <SelectValue placeholder={placeholder || "Selecione..."} />
-              </SelectTrigger>
-              <SelectContent>
-                {options.map((option) => (
-                  <SelectItem
-                    key={String(option.value)}
-                    value={String(option.value)}
-                  >
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          )}
+                <SelectTrigger
+                  className={cn(
+                    "w-full rounded-xl outline-none transition focus:border-transparent focus:ring-2 focus:ring-[#a5ccf9]/60 glass-border bg-secondary/30 px-4 py-3.5 text-base text-foreground text-left flex justify-between items-center h-auto font-normal",
+                    errorMessage && "border-destructive focus:ring-destructive/20"
+                  )}
+                >
+                  <SelectValue placeholder={placeholder || "Selecione..."}>
+                    {selectedOption ? selectedOption.label : undefined}
+                  </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                  {options.map((option) => (
+                    <SelectItem
+                      key={String(option.value)}
+                      value={String(option.value)}
+                    >
+                      {option.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            )
+          }}
         />
       </div>
 

@@ -1,6 +1,6 @@
 import { IconHeader } from "@/components/IconHeader"
 import { ThemeToggle } from "@/components/theme-toggle"
-import { Lock, ShieldAlert } from "lucide-react"
+import { Lock, User } from "lucide-react"
 
 export function Header() {
   return (
@@ -39,8 +39,8 @@ export function Header() {
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
             </span>
             <IconHeader
-              icon={ShieldAlert}
-              title="Conexão segura"
+              icon={User}
+              title="by Charlie Bellow"
               iconColorClass="text-primary"
             />
           </div>

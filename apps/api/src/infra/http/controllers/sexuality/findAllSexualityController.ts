@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { FindAllSexualityUseCase } from 'src/application/useCases/sexuality/findAllSexualityUseCase';
+import { SexualityPresenter } from 'src/infra/http/presenters/sexuality.presenter';
 
 @Controller('sexualities')
 export class FindAllSexualityController {
@@ -9,8 +10,8 @@ export class FindAllSexualityController {
 
   @Get()
   async handle() {
-    const result = await this.findAllSexualityUseCase.execute();
+    const sexuality = await this.findAllSexualityUseCase.execute();
 
-    return result;
+    return sexuality.map((sexuality) => SexualityPresenter.toHTTP(sexuality));
   }
 }
