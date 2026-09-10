@@ -16,7 +16,6 @@ export abstract class PersonRepository {
   abstract update(person: Person): Promise<void>;
   abstract delete(id: string): Promise<void>;
   abstract findById(id: string): Promise<Person | null>;
-  abstract findBySlug(slug: string): Promise<Person | null>;
   abstract findByCpf(cpf: string): Promise<Person | null>;
   abstract findByRg(rg: string): Promise<Person | null>;
   abstract listAll(): Promise<Person[]>;

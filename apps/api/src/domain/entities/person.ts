@@ -7,7 +7,6 @@ import { Pronouns } from 'src/domain/enums/pronouns';
 export interface PersonProps {
   id?: string;
   civilName: string;
-  slug?: string;
   genderId: string;
   sexualityId: string;
   socialName?: string | null;
@@ -35,16 +34,8 @@ export class Person {
       throw new Error('A data de nascimento não pode ser no futuro.');
     }
 
-    const generatedSlug = props.civilName
-      .toLowerCase()
-      .trim()
-      .normalize('NFD') // Remove acentos
-      .replace(/[\u0300-\u036f]/g, '') // Remove caracteres de acentos"")
-      .replace(/\s+/g, '-');
-
     this.props = {
       ...props,
-      slug: props.slug ?? generatedSlug,
       createdAt: props.createdAt ?? new Date(),
     };
   }
@@ -67,10 +58,6 @@ export class Person {
 
   get socialName() {
     return this.props.socialName;
-  }
-
-  get slug() {
-    return this.props.slug;
   }
 
   get cpf() {
@@ -119,7 +106,6 @@ export class Person {
       name: this.displayName,
       civilName: this.civilName,
       socialName: this.socialName || this.civilName,
-      slug: this.slug,
       cpf: this.cpf,
       rg: this.rg,
       birthDate: this.birthDate,

@@ -80,7 +80,6 @@ function main() {
                                 cpf: '12345678901',
                                 rg: 'MG1234567',
                                 pronouns: 'HE_HIM',
-                                slug: 'charlie-silva',
                                 genderId: homemTrans.id,
                                 sexualityId: bissexual.id,
                             },

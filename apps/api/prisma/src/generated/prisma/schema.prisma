@@ -43,7 +43,6 @@ model Person {
   id         String   @id @default(uuid())
   name       String
   socialName String?
-  slug       String   @unique
   cpf        String   @unique
   rg         String   @unique
   birthDate  DateTime

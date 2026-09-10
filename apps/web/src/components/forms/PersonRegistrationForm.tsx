@@ -75,7 +75,7 @@ export function PersonRegistrationForm() {
   }
 
   return (
-    <Card.Root className="p-6 sm:p-8">
+    <Card.Root className="p-6 sm:p-8 max-w-4xl mx-auto mt-6">
       <div className="mb-6 flex w-full min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
         <Card.Header className="w-full min-w-0 flex-1">
           <CardHeaderTitle tag="h2">Coleta de dados</CardHeaderTitle>
@@ -113,8 +113,8 @@ export function PersonRegistrationForm() {
         <CustomInput
           {...register("socialName")}
           label="Nome Social"
-          badge="Destaque"
-          // Aqie essa pergunta faz total diferença, porque não faz você tentar presumir o gÇenero da pessoa, e sim deixa ela se expressar. Isso é muito importante. é bem diferente de perguntar omo você gostaria de ser chamada(o)? percebe que aqui você tá tentando saber o gênero? então sempre que possível use termos como "você" "pessoa", etc. e não tente adivinhar o gênero da pessoa, assim é muito mais inclusiva e respeitosa.
+          badge="Como você se identifica"
+          // Aqui essa pergunta faz total diferença, porque não faz você tentar presumir o gÇenero da pessoa, e sim deixa ela se expressar. Isso é muito importante. é bem diferente de perguntar omo você gostaria de ser chamada(o)? percebe que aqui você tá tentando saber o gênero? então sempre que possível use termos como "você" "pessoa", etc. e não tente adivinhar o gênero da pessoa, assim é muito mais inclusiva e respeitosa.
           placeholder="Como você gostaria que eu te chame?"
           errorMessage={errors.socialName?.message}
           theme="white"

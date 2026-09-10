@@ -24,16 +24,7 @@ export class PrismaPersonRepository implements PersonRepository {
 
     return PrismaPersonMapper.toDomain(person);
   }
-
-  async findBySlug(slug: string): Promise<Person | null> {
-    const person = await this.prisma.person.findUnique({
-      where: { slug },
-    });
-
-    if (!person) return null;
-
-    return PrismaPersonMapper.toDomain(person);
-  }
+  
   async findByCpf(cpf: string): Promise<Person | null> {
     const person = await this.prisma.person.findUnique({
       where: { cpf },

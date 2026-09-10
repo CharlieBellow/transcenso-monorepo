@@ -1,8 +1,6 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreatePersonUseCase } from 'src/application/useCases/person/createPersonUseCase';
 
-import { PrismaService } from 'src/infra/database/prisma/PrismaService';
-
 import { CreatePersonRequests } from 'src/infra/http/dtos/createPersonRequests';
 import { PersonPresenter } from 'src/infra/http/presenters/person.presenter';
 

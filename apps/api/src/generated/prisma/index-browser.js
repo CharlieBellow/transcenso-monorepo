@@ -144,7 +144,6 @@ exports.Prisma.PersonScalarFieldEnum = {
   id: 'id',
   civilName: 'civilName',
   socialName: 'socialName',
-  slug: 'slug',
   cpf: 'cpf',
   rg: 'rg',
   birthDate: 'birthDate',

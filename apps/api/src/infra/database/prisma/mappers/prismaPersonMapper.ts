@@ -23,7 +23,6 @@ export class PrismaPersonMapper {
       cpf: person.cpf,
       rg: person.rg,
       pronouns: person.pronouns as unknown as PrismaPronouns[],
-      slug: person.slug,
       genderId: person.genderId,
       sexualityId: person.sexualityId,
     };
@@ -38,7 +37,6 @@ export class PrismaPersonMapper {
       cpf: raw.cpf,
       rg: raw.rg,
       pronouns: raw.pronouns as unknown as Pronouns[],
-      slug: raw.slug,
       genderId: raw.genderId,
       sexualityId: raw.sexualityId,
     });

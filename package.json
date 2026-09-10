@@ -8,6 +8,8 @@
   "scripts": {
     "dev:api": "pnpm --filter @transcenso/api start:dev",
     "dev:web": "pnpm --filter @transcenso/web dev",
+    "dev": "pnpm --filter @transcenso/api start:dev",
+    "web": "pnpm --filter @transcenso/web dev",
     "build:api": "pnpm --filter @transcenso/api build",
     "build:web": "pnpm --filter @transcenso/web build",
     "test": "echo \"Error: no test specified\" && exit 1"

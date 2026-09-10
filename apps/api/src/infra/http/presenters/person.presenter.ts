@@ -24,7 +24,6 @@ export class PersonPresenter {
       name: person.name,
       civilName: person.civilName,
       socialName: person.socialName ?? null,
-      slug: person.slug,
       cpf: person.cpf,
       rg: person.rg,
       birthDate: person.birthDate,

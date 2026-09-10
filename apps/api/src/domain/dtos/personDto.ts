@@ -7,7 +7,6 @@ export interface PersonDTO {
   socialName: string;
   name: string;
   civilName: string;
-  slug: string;
   cpf: string;
   rg: string;
   birthDate: Date;

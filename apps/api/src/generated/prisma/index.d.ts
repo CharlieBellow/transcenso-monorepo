@@ -3346,7 +3346,6 @@ export namespace Prisma {
     id: string | null
     civilName: string | null
     socialName: string | null
-    slug: string | null
     cpf: string | null
     rg: string | null
     birthDate: Date | null
@@ -3360,7 +3359,6 @@ export namespace Prisma {
     id: string | null
     civilName: string | null
     socialName: string | null
-    slug: string | null
     cpf: string | null
     rg: string | null
     birthDate: Date | null
@@ -3374,7 +3372,6 @@ export namespace Prisma {
     id: number
     civilName: number
     socialName: number
-    slug: number
     cpf: number
     rg: number
     birthDate: number
@@ -3391,7 +3388,6 @@ export namespace Prisma {
     id?: true
     civilName?: true
     socialName?: true
-    slug?: true
     cpf?: true
     rg?: true
     birthDate?: true
@@ -3405,7 +3401,6 @@ export namespace Prisma {
     id?: true
     civilName?: true
     socialName?: true
-    slug?: true
     cpf?: true
     rg?: true
     birthDate?: true
@@ -3419,7 +3414,6 @@ export namespace Prisma {
     id?: true
     civilName?: true
     socialName?: true
-    slug?: true
     cpf?: true
     rg?: true
     birthDate?: true
@@ -3507,7 +3501,6 @@ export namespace Prisma {
     id: string
     civilName: string
     socialName: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date
@@ -3539,7 +3532,6 @@ export namespace Prisma {
     id?: boolean
     civilName?: boolean
     socialName?: boolean
-    slug?: boolean
     cpf?: boolean
     rg?: boolean
     birthDate?: boolean
@@ -3556,7 +3548,6 @@ export namespace Prisma {
     id?: boolean
     civilName?: boolean
     socialName?: boolean
-    slug?: boolean
     cpf?: boolean
     rg?: boolean
     birthDate?: boolean
@@ -3573,7 +3564,6 @@ export namespace Prisma {
     id?: boolean
     civilName?: boolean
     socialName?: boolean
-    slug?: boolean
     cpf?: boolean
     rg?: boolean
     birthDate?: boolean
@@ -3590,7 +3580,6 @@ export namespace Prisma {
     id?: boolean
     civilName?: boolean
     socialName?: boolean
-    slug?: boolean
     cpf?: boolean
     rg?: boolean
     birthDate?: boolean
@@ -3601,7 +3590,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type PersonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "civilName" | "socialName" | "slug" | "cpf" | "rg" | "birthDate" | "pronouns" | "genderId" | "sexualityId" | "createdAt" | "updatedAt", ExtArgs["result"]["person"]>
+  export type PersonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "civilName" | "socialName" | "cpf" | "rg" | "birthDate" | "pronouns" | "genderId" | "sexualityId" | "createdAt" | "updatedAt", ExtArgs["result"]["person"]>
   export type PersonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     gender?: boolean | GenderDefaultArgs<ExtArgs>
     sexuality?: boolean | SexualityDefaultArgs<ExtArgs>
@@ -3625,7 +3614,6 @@ export namespace Prisma {
       id: string
       civilName: string
       socialName: string | null
-      slug: string
       cpf: string
       rg: string
       birthDate: Date
@@ -4062,7 +4050,6 @@ export namespace Prisma {
     readonly id: FieldRef<"Person", 'String'>
     readonly civilName: FieldRef<"Person", 'String'>
     readonly socialName: FieldRef<"Person", 'String'>
-    readonly slug: FieldRef<"Person", 'String'>
     readonly cpf: FieldRef<"Person", 'String'>
     readonly rg: FieldRef<"Person", 'String'>
     readonly birthDate: FieldRef<"Person", 'DateTime'>
@@ -4534,7 +4521,6 @@ export namespace Prisma {
     id: 'id',
     civilName: 'civilName',
     socialName: 'socialName',
-    slug: 'slug',
     cpf: 'cpf',
     rg: 'rg',
     birthDate: 'birthDate',
@@ -4773,7 +4759,6 @@ export namespace Prisma {
     id?: StringFilter<"Person"> | string
     civilName?: StringFilter<"Person"> | string
     socialName?: StringNullableFilter<"Person"> | string | null
-    slug?: StringFilter<"Person"> | string
     cpf?: StringFilter<"Person"> | string
     rg?: StringFilter<"Person"> | string
     birthDate?: DateTimeFilter<"Person"> | Date | string
@@ -4790,7 +4775,6 @@ export namespace Prisma {
     id?: SortOrder
     civilName?: SortOrder
     socialName?: SortOrderInput | SortOrder
-    slug?: SortOrder
     cpf?: SortOrder
     rg?: SortOrder
     birthDate?: SortOrder
@@ -4805,7 +4789,6 @@ export namespace Prisma {
 
   export type PersonWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    slug?: string
     cpf?: string
     rg?: string
     AND?: PersonWhereInput | PersonWhereInput[]
@@ -4821,13 +4804,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Person"> | Date | string
     gender?: XOR<GenderScalarRelationFilter, GenderWhereInput>
     sexuality?: XOR<SexualityScalarRelationFilter, SexualityWhereInput>
-  }, "id" | "slug" | "cpf" | "rg">
+  }, "id" | "cpf" | "rg">
 
   export type PersonOrderByWithAggregationInput = {
     id?: SortOrder
     civilName?: SortOrder
     socialName?: SortOrderInput | SortOrder
-    slug?: SortOrder
     cpf?: SortOrder
     rg?: SortOrder
     birthDate?: SortOrder
@@ -4848,7 +4830,6 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Person"> | string
     civilName?: StringWithAggregatesFilter<"Person"> | string
     socialName?: StringNullableWithAggregatesFilter<"Person"> | string | null
-    slug?: StringWithAggregatesFilter<"Person"> | string
     cpf?: StringWithAggregatesFilter<"Person"> | string
     rg?: StringWithAggregatesFilter<"Person"> | string
     birthDate?: DateTimeWithAggregatesFilter<"Person"> | Date | string
@@ -5011,7 +4992,6 @@ export namespace Prisma {
     id?: string
     civilName: string
     socialName?: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date | string
@@ -5026,7 +5006,6 @@ export namespace Prisma {
     id?: string
     civilName: string
     socialName?: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date | string
@@ -5041,7 +5020,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5056,7 +5034,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5071,7 +5048,6 @@ export namespace Prisma {
     id?: string
     civilName: string
     socialName?: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date | string
@@ -5086,7 +5062,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5099,7 +5074,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5298,7 +5272,6 @@ export namespace Prisma {
     id?: SortOrder
     civilName?: SortOrder
     socialName?: SortOrder
-    slug?: SortOrder
     cpf?: SortOrder
     rg?: SortOrder
     birthDate?: SortOrder
@@ -5313,7 +5286,6 @@ export namespace Prisma {
     id?: SortOrder
     civilName?: SortOrder
     socialName?: SortOrder
-    slug?: SortOrder
     cpf?: SortOrder
     rg?: SortOrder
     birthDate?: SortOrder
@@ -5327,7 +5299,6 @@ export namespace Prisma {
     id?: SortOrder
     civilName?: SortOrder
     socialName?: SortOrder
-    slug?: SortOrder
     cpf?: SortOrder
     rg?: SortOrder
     birthDate?: SortOrder
@@ -5583,7 +5554,6 @@ export namespace Prisma {
     id?: string
     civilName: string
     socialName?: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date | string
@@ -5597,7 +5567,6 @@ export namespace Prisma {
     id?: string
     civilName: string
     socialName?: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date | string
@@ -5640,7 +5609,6 @@ export namespace Prisma {
     id?: StringFilter<"Person"> | string
     civilName?: StringFilter<"Person"> | string
     socialName?: StringNullableFilter<"Person"> | string | null
-    slug?: StringFilter<"Person"> | string
     cpf?: StringFilter<"Person"> | string
     rg?: StringFilter<"Person"> | string
     birthDate?: DateTimeFilter<"Person"> | Date | string
@@ -5655,7 +5623,6 @@ export namespace Prisma {
     id?: string
     civilName: string
     socialName?: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date | string
@@ -5669,7 +5636,6 @@ export namespace Prisma {
     id?: string
     civilName: string
     socialName?: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date | string
@@ -5821,7 +5787,6 @@ export namespace Prisma {
     id?: string
     civilName: string
     socialName?: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date | string
@@ -5835,7 +5800,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5849,7 +5813,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5863,7 +5826,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5877,7 +5839,6 @@ export namespace Prisma {
     id?: string
     civilName: string
     socialName?: string | null
-    slug: string
     cpf: string
     rg: string
     birthDate: Date | string
@@ -5891,7 +5852,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5905,7 +5865,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5919,7 +5878,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     civilName?: StringFieldUpdateOperationsInput | string
     socialName?: NullableStringFieldUpdateOperationsInput | string | null
-    slug?: StringFieldUpdateOperationsInput | string
     cpf?: StringFieldUpdateOperationsInput | string
     rg?: StringFieldUpdateOperationsInput | string
     birthDate?: DateTimeFieldUpdateOperationsInput | Date | string

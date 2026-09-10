@@ -51,7 +51,6 @@ async function main() {
       cpf: '12345678901',
       rg: 'MG1234567',
       pronouns: ['ELE_DELE'],
-      slug: 'charlie-silva',
       genderId: homemTrans.id,
       sexualityId: bissexual.id,
     },

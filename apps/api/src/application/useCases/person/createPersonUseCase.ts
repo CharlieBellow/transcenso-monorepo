@@ -9,7 +9,6 @@ import { SexualityRepository } from 'src/domain/repositories/sexualityRepository
 interface CreatePersonInput {
   civilName: string;
   socialName?: string | null;
-  slug?: string;
   cpf: string;
   rg: string;
   genderId: string;
@@ -42,11 +41,6 @@ export class CreatePersonUseCase {
     const existingPersonRg = await this.personRepository.findByRg(input.rg);
     if (existingPersonRg) {
       throw new Error(`Rg already exists`);
-    }
-
-    const existingSlug = await this.personRepository.findBySlug(input.slug);
-    if (existingSlug) {
-      throw new Error(`Slug already exists`);
     }
 
     const person = Person.create({
