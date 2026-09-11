@@ -3,6 +3,7 @@
 import React from "react"
 import { ShieldCheck, Mail, Tag } from "lucide-react"
 import InlineBorder from "@/components/InlineBorder"
+import { Card } from "@/components/ui/Card"
 
 // DTO de exibição na camada de apresentação (ViewModel)
 export interface UserProfileViewModel {
@@ -30,7 +31,7 @@ export function UserProfileCard() {
   const user = MOCK_LOGGED_USER
 
   return (
-    <div className="w-full max-w-lg rounded-2xl border border-border bg-card p-6 shadow-sm sm:p-8">
+    <Card.Root className="w-full max-w-lg rounded-2xl border border-border bg-card p-6 sm:p-8">
       {/* Cabeçalho do Perfil */}
       <div className="flex items-center justify-between border-b border-border/60 pb-6">
         <div className="flex items-center gap-4">
@@ -39,7 +40,7 @@ export function UserProfileCard() {
           </div>
           <div>
             <h2 className="text-xl font-bold text-foreground">
-              {user.socialName}
+              {user.name}
             </h2>
             <p className="text-xs text-muted-foreground">{user.civilName}</p>
           </div>
@@ -97,6 +98,6 @@ export function UserProfileCard() {
           <span>{user.email}</span>
         </div>
       </div>
-    </div>
+    </Card.Root>
   )
 }

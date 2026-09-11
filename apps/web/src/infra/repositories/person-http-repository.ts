@@ -8,6 +8,10 @@ import { apiClient } from "../http/api-client"
 import { PersonMapper } from "../mappers/person-mapper"
 
 export class PersonHttpRepository implements PersonRepository {
+  async findById(id: string): Promise<PersonDetailResponse> {
+    const response = await apiClient.get<PersonDetailResponse>(`/people/${id}`);
+    return response.data;
+  }
   async save(data: PersonRegistrationFormData): Promise<PersonDetailResponse> {
     try {
       // 1. Delegamos a conversão de formato para o Mapper
