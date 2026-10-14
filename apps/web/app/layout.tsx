@@ -1,7 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
-import { ThemeProvider } from 'next-themes'
+import { ThemeProvider } from "@/components/providers/theme-provider"
 import './globals.css'
 
 const inter = Inter({
@@ -56,12 +56,12 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
           disableTransitionOnChange
+          enableSystem
         >
           {children}
         </ThemeProvider>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        {process.env.NODE_ENV === "production" && <Analytics />}
       </body>
     </html>
   )

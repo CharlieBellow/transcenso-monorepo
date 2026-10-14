@@ -6,7 +6,7 @@ import { PersonPresenter } from 'src/infra/http/presenters/person.presenter';
 export class FindByIdPersonController {
   constructor(private readonly findByIdPersonUseCase: FindByIdPersonUseCase) {}
 
-  @Get('id/:id')
+  @Get(':id')
   async handle(@Param('id') id: string) {
     const person = await this.findByIdPersonUseCase.execute(id);
 

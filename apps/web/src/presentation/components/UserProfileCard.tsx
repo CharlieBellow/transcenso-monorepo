@@ -1,34 +1,21 @@
 "use client"
+import { useState } from "react"
 
-import React from "react"
-import { ShieldCheck, Mail, Tag } from "lucide-react"
+import { UserProfileViewModel } from "@/application/hooks/UserProfileViewModel"
 import InlineBorder from "@/components/InlineBorder"
 import { Card } from "@/components/ui/Card"
+import { Calendar, ShieldCheck, Tag, Eye, EyeOff } from "lucide-react"
+
+
 
 // DTO de exibição na camada de apresentação (ViewModel)
-export interface UserProfileViewModel {
-  id: string
-  socialName: string
-  civilName: string
-  email: string
-  pronouns: string[]
-  genderTitle: string
-  sexualityTitle: string
+export interface UserProfileCardProps {
+  user: UserProfileViewModel
 }
 
-// Dados mockados simulando o retorno da API/Sessão
-const MOCK_LOGGED_USER: UserProfileViewModel = {
-  id: "usr_01h8x",
-  socialName: "Charlie",
-  civilName: "Charlie Bellow",
-  email: "charlie@exemplo.com",
-  pronouns: ["ele/dele", "elu/delu"], // Múltiplos pronomes cadastrados
-  genderTitle: "Homem Trans",
-  sexualityTitle: "Pansexual"
-}
-
-export function UserProfileCard() {
-  const user = MOCK_LOGGED_USER
+export function UserProfileCard({ user }: UserProfileCardProps) {
+  const [showCivilName, setShowCivilName] = useState(false)
+  const initialLetter = user.displayName.charAt(0).toUpperCase()
 
   return (
     <Card.Root className="w-full max-w-lg rounded-2xl border border-border bg-card p-6 sm:p-8">
@@ -36,13 +23,35 @@ export function UserProfileCard() {
       <div className="flex items-center justify-between border-b border-border/60 pb-6">
         <div className="flex items-center gap-4">
           <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary font-bold text-xl border border-primary/20">
-            {user.socialName.charAt(0)}
+            {initialLetter}
           </div>
           <div>
             <h2 className="text-xl font-bold text-foreground">
-              {user.name}
+              {user.displayName}
             </h2>
-            <p className="text-xs text-muted-foreground">{user.civilName}</p>
+            {/* Para pessoas trans e não binárias, o Nome Social é a sua identidade
+            pública e principal. O Nome Civil é uma informação
+            burocrática/jurídica que, em muitos contextos (como ao compartilhar
+            a tela, fazer gravações ou demonstrar um sistema), não precisa ficar
+            exposta. Sem contar que pessoas trans e não binárias podem se sentir desconfoirtável ao ver seu nome civil. */}
+            <div className="flex items-center gap-1.5 mt-0.5">
+              <p className="text-xs text-muted-foreground font-mono">
+                {showCivilName ? user.civilName : "••••••••••••"}
+              </p>
+              <button
+                type="button"
+                onClick={() => setShowCivilName((prev) => !prev)}
+                className="text-muted-foreground hover:text-foreground transition-colors p-0.5 rounded focus:outline-none focus:ring-1 focus:ring-primary"
+                title={
+                  showCivilName ? "Ocultar nome civil" : "Exibir nome civil"
+                }
+                aria-label={
+                  showCivilName ? "Ocultar nome civil" : "Exibir nome civil"
+                }
+              >
+                {showCivilName ? <EyeOff size={13} /> : <Eye size={13} />}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -61,7 +70,7 @@ export function UserProfileCard() {
             Pronomes de tratamento
           </span>
           <div className="flex flex-wrap gap-2">
-            {user.pronouns.map((pronoun) => (
+            {user.pronounsLabels.map((pronoun) => (
               <span
                 key={pronoun}
                 className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary"
@@ -94,8 +103,8 @@ export function UserProfileCard() {
         </div>
 
         <div className="flex items-center gap-2 pt-2 text-xs text-muted-foreground">
-          <Mail size={14} />
-          <span>{user.email}</span>
+          <Calendar size={14} />
+          <span>{user.birthDateFormatted}</span>
         </div>
       </div>
     </Card.Root>

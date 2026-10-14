@@ -1,7 +1,26 @@
-import PageBase from "@/components/PageBase"
+import { usePersonDetail } from "@/application/hooks/usePersonDetail"
+
 import { UserProfileCard } from "@/presentation/components/UserProfileCard"
+import { Loader2 } from "lucide-react"
 
 export default function ProfilePage() {
+  const { user: person, isLoading, error } = usePersonDetail()
+
+  if (isLoading) {
+    return (
+      <div className="flex h-64 items-center justify-center">
+        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      </div>
+    )
+  }
+
+  if (error || !person) {
+    return (
+      <div className="rounded-xl bg-destructive/10 p-4 text-center text-sm text-destructive">
+        {error || "Perfil não localizado."}
+      </div>
+    )
+  }
   return (
     <>
       <div className="mx-auto mt-12 w-full max-w-6xl px-4 sm:px-6">
@@ -13,7 +32,7 @@ export default function ProfilePage() {
         </p>
       </div>
       <div className="mx-auto mt-12 w-full max-w-6xl px-4 sm:px-6">
-        <UserProfileCard />
+        <UserProfileCard user ={person} />
       </div>
     </>
   )
